@@ -1,0 +1,12 @@
+C:\Users\ulrik\source\repos\Canvas\Canvas\bin\Debug\net6.0\Canvas.deps.json
+C:\Users\ulrik\source\repos\Canvas\Canvas\bin\Debug\net6.0\Canvas.dll
+C:\Users\ulrik\source\repos\Canvas\Canvas\bin\Debug\net6.0\Canvas.pdb
+C:\Users\ulrik\source\repos\Canvas\Canvas\obj\Debug\net6.0\Canvas.csproj.AssemblyReference.cache
+C:\Users\ulrik\source\repos\Canvas\Canvas\obj\Debug\net6.0\Canvas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ulrik\source\repos\Canvas\Canvas\obj\Debug\net6.0\Canvas.AssemblyInfoInputs.cache
+C:\Users\ulrik\source\repos\Canvas\Canvas\obj\Debug\net6.0\Canvas.AssemblyInfo.cs
+C:\Users\ulrik\source\repos\Canvas\Canvas\obj\Debug\net6.0\Canvas.csproj.CoreCompileInputs.cache
+C:\Users\ulrik\source\repos\Canvas\Canvas\obj\Debug\net6.0\Canvas.dll
+C:\Users\ulrik\source\repos\Canvas\Canvas\obj\Debug\net6.0\refint\Canvas.dll
+C:\Users\ulrik\source\repos\Canvas\Canvas\obj\Debug\net6.0\Canvas.pdb
+C:\Users\ulrik\source\repos\Canvas\Canvas\obj\Debug\net6.0\ref\Canvas.dll

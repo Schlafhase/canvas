@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "rwditBpdFntN2NOBBGySYMAdCkiMtgRJbgtpP88YzV58WK1OHJmtkr5PsmRpX84hdtdhufDIXY1KPU206mPr9A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ulrik\\source\\repos\\Canvas\\Canvas\\Canvas.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ulrik\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
+    "C:\\Users\\ulrik\\.nuget\\packages\\system.drawing.common\\8.0.10\\system.drawing.common.8.0.10.nupkg.sha512"
+  ],
+  "logs": []
+}
