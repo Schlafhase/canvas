@@ -134,11 +134,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Canvas.csproj",
+      "projectUniqueName": "C:\\Projects\\cs\\Canvas\\Canvas\\Canvas.csproj",
       "projectName": "Canvas",
-      "projectPath": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Canvas.csproj",
+      "projectPath": "C:\\Projects\\cs\\Canvas\\Canvas\\Canvas.csproj",
       "packagesPath": "C:\\Users\\linus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\obj\\",
+      "outputPath": "C:\\Projects\\cs\\Canvas\\Canvas\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
