@@ -1,0 +1,206 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\linus\\source\\repos\\Canvas\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0FA3668F-F49A-4B16-B6B9-D86DF182F114}|CanvasTest\\CanvasTest.csproj|c:\\users\\linus\\source\\repos\\canvas\\canvastest\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FA3668F-F49A-4B16-B6B9-D86DF182F114}|CanvasTest\\CanvasTest.csproj|solutionrelative:canvastest\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FA3668F-F49A-4B16-B6B9-D86DF182F114}|CanvasTest\\CanvasTest.csproj|C:\\Users\\linus\\source\\repos\\Canvas\\canvastest\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{0FA3668F-F49A-4B16-B6B9-D86DF182F114}|CanvasTest\\CanvasTest.csproj|solutionrelative:canvastest\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FA3668F-F49A-4B16-B6B9-D86DF182F114}|CanvasTest\\CanvasTest.csproj|c:\\users\\linus\\source\\repos\\canvas\\canvastest\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FA3668F-F49A-4B16-B6B9-D86DF182F114}|CanvasTest\\CanvasTest.csproj|solutionrelative:canvastest\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F2144A1-E3A0-4BBD-AE5A-BD7422368405}|Canvas\\Canvas.csproj|c:\\users\\linus\\source\\repos\\canvas\\canvas\\canvas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F2144A1-E3A0-4BBD-AE5A-BD7422368405}|Canvas\\Canvas.csproj|solutionrelative:canvas\\canvas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F2144A1-E3A0-4BBD-AE5A-BD7422368405}|Canvas\\Canvas.csproj|c:\\users\\linus\\source\\repos\\canvas\\canvas\\components\\square.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F2144A1-E3A0-4BBD-AE5A-BD7422368405}|Canvas\\Canvas.csproj|solutionrelative:canvas\\components\\square.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F2144A1-E3A0-4BBD-AE5A-BD7422368405}|Canvas\\Canvas.csproj|c:\\users\\linus\\source\\repos\\canvas\\canvas\\components\\interfaces\\irectanglesizedcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F2144A1-E3A0-4BBD-AE5A-BD7422368405}|Canvas\\Canvas.csproj|solutionrelative:canvas\\components\\interfaces\\irectanglesizedcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F2144A1-E3A0-4BBD-AE5A-BD7422368405}|Canvas\\Canvas.csproj|c:\\users\\linus\\source\\repos\\canvas\\canvas\\components\\interfaces\\isizedcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F2144A1-E3A0-4BBD-AE5A-BD7422368405}|Canvas\\Canvas.csproj|solutionrelative:canvas\\components\\interfaces\\isizedcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F2144A1-E3A0-4BBD-AE5A-BD7422368405}|Canvas\\Canvas.csproj|c:\\users\\linus\\source\\repos\\canvas\\canvas\\components\\interfaces\\ipositionedcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F2144A1-E3A0-4BBD-AE5A-BD7422368405}|Canvas\\Canvas.csproj|solutionrelative:canvas\\components\\interfaces\\ipositionedcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6F2144A1-E3A0-4BBD-AE5A-BD7422368405}|Canvas\\Canvas.csproj|c:\\users\\linus\\source\\repos\\canvas\\canvas\\components\\interfaces\\icanvascomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6F2144A1-E3A0-4BBD-AE5A-BD7422368405}|Canvas\\Canvas.csproj|solutionrelative:canvas\\components\\interfaces\\icanvascomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FA3668F-F49A-4B16-B6B9-D86DF182F114}|CanvasTest\\CanvasTest.csproj|c:\\users\\linus\\source\\repos\\canvas\\canvastest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FA3668F-F49A-4B16-B6B9-D86DF182F114}|CanvasTest\\CanvasTest.csproj|solutionrelative:canvastest\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\linus\\source\\repos\\Canvas\\CanvasTest\\Form1.cs",
+              "RelativeDocumentMoniker": "CanvasTest\\Form1.cs",
+              "ToolTip": "C:\\Users\\linus\\source\\repos\\Canvas\\CanvasTest\\Form1.cs",
+              "RelativeToolTip": "CanvasTest\\Form1.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAApwDMAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T12:34:37.078Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IPositionedComponent.cs",
+              "DocumentMoniker": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Components\\Interfaces\\IPositionedComponent.cs",
+              "RelativeDocumentMoniker": "Canvas\\Components\\Interfaces\\IPositionedComponent.cs",
+              "ToolTip": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Components\\Interfaces\\IPositionedComponent.cs",
+              "RelativeToolTip": "Canvas\\Components\\Interfaces\\IPositionedComponent.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T12:37:15.705Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Canvas.cs",
+              "DocumentMoniker": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Canvas.cs",
+              "RelativeDocumentMoniker": "Canvas\\Canvas.cs",
+              "ToolTip": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Canvas.cs",
+              "RelativeToolTip": "Canvas\\Canvas.cs",
+              "ViewState": "AQIAAH8AAAAAAAAAAAAAAJEAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T12:34:39.224Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ISizedComponent.cs",
+              "DocumentMoniker": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Components\\Interfaces\\ISizedComponent.cs",
+              "RelativeDocumentMoniker": "Canvas\\Components\\Interfaces\\ISizedComponent.cs",
+              "ToolTip": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Components\\Interfaces\\ISizedComponent.cs",
+              "RelativeToolTip": "Canvas\\Components\\Interfaces\\ISizedComponent.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T12:37:58.854Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Square.cs",
+              "DocumentMoniker": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Components\\Square.cs",
+              "RelativeDocumentMoniker": "Canvas\\Components\\Square.cs",
+              "ToolTip": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Components\\Square.cs",
+              "RelativeToolTip": "Canvas\\Components\\Square.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAApwAsAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T12:34:36.899Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\linus\\source\\repos\\Canvas\\CanvasTest\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "CanvasTest\\Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\linus\\source\\repos\\Canvas\\CanvasTest\\Form1.Designer.cs",
+              "RelativeToolTip": "CanvasTest\\Form1.Designer.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAAD4AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T12:34:37.081Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\linus\\source\\repos\\Canvas\\CanvasTest\\Program.cs",
+              "RelativeDocumentMoniker": "CanvasTest\\Program.cs",
+              "ToolTip": "C:\\Users\\linus\\source\\repos\\Canvas\\CanvasTest\\Program.cs",
+              "RelativeToolTip": "CanvasTest\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T12:34:37.082Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\linus\\source\\repos\\Canvas\\CanvasTest\\Form1.cs",
+              "RelativeDocumentMoniker": "CanvasTest\\Form1.cs",
+              "ToolTip": "C:\\Users\\linus\\source\\repos\\Canvas\\CanvasTest\\Form1.cs [Design]",
+              "RelativeToolTip": "CanvasTest\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T12:34:39.218Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IRectangleSizedComponent.cs",
+              "DocumentMoniker": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Components\\Interfaces\\IRectangleSizedComponent.cs",
+              "RelativeDocumentMoniker": "Canvas\\Components\\Interfaces\\IRectangleSizedComponent.cs",
+              "ToolTip": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Components\\Interfaces\\IRectangleSizedComponent.cs",
+              "RelativeToolTip": "Canvas\\Components\\Interfaces\\IRectangleSizedComponent.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T12:39:50.425Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ICanvasComponent.cs",
+              "DocumentMoniker": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Components\\Interfaces\\ICanvasComponent.cs",
+              "RelativeDocumentMoniker": "Canvas\\Components\\Interfaces\\ICanvasComponent.cs",
+              "ToolTip": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Components\\Interfaces\\ICanvasComponent.cs",
+              "RelativeToolTip": "Canvas\\Components\\Interfaces\\ICanvasComponent.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-02T12:34:39.222Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 590,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{9a7cebbb-dc5c-4986-bc49-962da46aa506}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
