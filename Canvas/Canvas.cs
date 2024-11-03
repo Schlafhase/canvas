@@ -6,6 +6,7 @@ namespace Canvas
     public class Canvas : ICanvasComponent
     {
         #region Properties
+
         private int _x;
         private int _y;
 
@@ -15,10 +16,10 @@ namespace Canvas
             set
             {
                 _x = value;
-                
+
                 if (SuppressUpdate) return;
-                Parent?.OnUpdate?.Invoke();
-                OnUpdate?.Invoke();
+                Parent?.Update();
+                Update();
             }
         }
 
@@ -28,10 +29,10 @@ namespace Canvas
             set
             {
                 _y = value;
-                
+
                 if (SuppressUpdate) return;
-                Parent?.OnUpdate?.Invoke();
-                OnUpdate?.Invoke();
+                Parent?.Update();
+                Update();
             }
         }
 
@@ -44,10 +45,10 @@ namespace Canvas
             set
             {
                 _width = value;
-                
+
                 if (SuppressUpdate) return;
-                Parent?.OnUpdate?.Invoke();
-                OnUpdate?.Invoke();
+                Parent?.Update();
+                Update();
             }
         }
 
@@ -57,17 +58,18 @@ namespace Canvas
             set
             {
                 _height = value;
-                
+
                 if (SuppressUpdate) return;
-                Parent?.OnUpdate?.Invoke();
-                OnUpdate?.Invoke();
+                Parent?.Update();
+                Update();
             }
         }
-        
+
         public bool SuppressUpdate { get; set; } = false;
         public Color BackgroundColor { get; set; } = Color.Transparent;
 
         private List<ICanvasComponent> _children = new();
+
         public List<ICanvasComponent> Children
         {
             get => _children;
@@ -79,11 +81,17 @@ namespace Canvas
         }
 
         public Canvas? Parent { get; set; }
+
         /// <summary>
         /// Children should call this method when they need to be updated.
         /// </summary>
-        public Action? OnUpdate;
-        
+        public Action? OnUpdate { private get; set; }
+
+        public int FrameRate { get; set; } = 60;
+        private bool _updateQueued = false;
+        private Thread? _updateThread;
+        private SynchronizationContext _syncContext;
+
         #endregion
 
         public Canvas(int x, int y, int width, int height, List<ICanvasComponent> children)
@@ -93,6 +101,7 @@ namespace Canvas
             Width = width;
             Height = height;
             Children = children;
+            initialize();
         }
 
         public Canvas(int x, int y, int width, int height)
@@ -101,7 +110,8 @@ namespace Canvas
             Y = y;
             Width = width;
             Height = height;
-            Children = new();
+            Children = new List<ICanvasComponent>();
+            initialize();
         }
 
         public Canvas(int width, int height, List<ICanvasComponent> children)
@@ -111,6 +121,7 @@ namespace Canvas
             Width = width;
             Height = height;
             Children = children;
+            initialize();
         }
 
         public Canvas(int width, int height)
@@ -120,14 +131,29 @@ namespace Canvas
             Width = width;
             Height = height;
             Children = new();
+            initialize();
         }
         
+        private void initialize()
+        {
+            _syncContext = SynchronizationContext.Current;
+            _updateThread = new Thread(() =>
+            {
+                while (true)
+                {
+                    _syncContext.Post(_ => update(), null);
+                    Thread.Sleep(1000 / FrameRate);
+                }
+            });
+            _updateThread.Start();
+        }
+
         public void AddChild(ICanvasComponent child)
         {
             Children.Add(child);
             child.Parent = this;
         }
-        
+
         public void RemoveChild(ICanvasComponent child)
         {
             Children.Remove(child);
@@ -142,8 +168,21 @@ namespace Canvas
             {
                 c.Put(g2);
             }
+
             g.Clear(BackgroundColor);
             g.DrawImage(bitmap, X, Y);
+        }
+
+        public void Update()
+        {
+            _updateQueued = true;
+        }
+
+        private void update()
+        {
+            if (!_updateQueued) return;
+            OnUpdate?.Invoke();
+            _updateQueued = false;
         }
     }
 }
