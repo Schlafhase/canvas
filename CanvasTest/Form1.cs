@@ -7,6 +7,7 @@ namespace CanvasTest
     {
         private Canvas.Canvas _canvas;
         private Square _square;
+        private BezierCurve _bezier;
         private RelativePositionedComponent<Square> _relativeSquare;
         private Thread animation;
         private bool disposed = false;
@@ -26,8 +27,11 @@ namespace CanvasTest
             _relativeSquare.X = 0.5f;
             _relativeSquare.Y = 0.5f;
             _relativeSquare.Centered = true;
+            
+            _bezier = new BezierCurve(new List<Point>() {new Point(400, 400), new Point(100, 100), new Point(200, 0), new Point(300, 100)});
 
             _canvas.AddChild(_relativeSquare);
+            _canvas.AddChild(_bezier);
             _canvas.BackgroundColor = Color.Green;
             _canvas.OnUpdate = update;
         }
@@ -51,6 +55,10 @@ namespace CanvasTest
                             this.Invoke((MethodInvoker)(() =>
                                 _relativeSquare.Y = Math.Cos((DateTime.Now - startTime).TotalMilliseconds / 1000f) / 2 +
                                                     0.5f));
+                            
+                            this.Invoke((MethodInvoker)(() =>
+                                _bezier.Points[1] = new Point((int) (100 * Math.Sin((DateTime.Now - startTime).TotalMilliseconds / 1000f)),
+                                    (int) (100 * Math.Cos((DateTime.Now - startTime).TotalMilliseconds / 1000f)))));
                         }
                         catch (ObjectDisposedException)
                         {
