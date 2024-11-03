@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\linus\\source\\repos\\Canvas\\CanvasTest\\CanvasTest.csproj": {}
+    "C:\\Projects\\cs\\Canvas\\CanvasTest\\CanvasTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\linus\\source\\repos\\Canvas\\CanvasTest\\CanvasTest.csproj": {
+    "C:\\Projects\\cs\\Canvas\\CanvasTest\\CanvasTest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\linus\\source\\repos\\Canvas\\CanvasTest\\CanvasTest.csproj",
+        "projectUniqueName": "C:\\Projects\\cs\\Canvas\\CanvasTest\\CanvasTest.csproj",
         "projectName": "CanvasTest",
-        "projectPath": "C:\\Users\\linus\\source\\repos\\Canvas\\CanvasTest\\CanvasTest.csproj",
+        "projectPath": "C:\\Projects\\cs\\Canvas\\CanvasTest\\CanvasTest.csproj",
         "packagesPath": "C:\\Users\\linus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\linus\\source\\repos\\Canvas\\CanvasTest\\obj\\",
+        "outputPath": "C:\\Projects\\cs\\Canvas\\CanvasTest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Canvas.csproj": {
-                "projectPath": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Canvas.csproj"
+              "C:\\Projects\\cs\\Canvas\\Canvas\\Canvas.csproj": {
+                "projectPath": "C:\\Projects\\cs\\Canvas\\Canvas\\Canvas.csproj"
               }
             }
           }
@@ -76,14 +76,14 @@
         }
       }
     },
-    "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Canvas.csproj": {
+    "C:\\Projects\\cs\\Canvas\\Canvas\\Canvas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Canvas.csproj",
+        "projectUniqueName": "C:\\Projects\\cs\\Canvas\\Canvas\\Canvas.csproj",
         "projectName": "Canvas",
-        "projectPath": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\Canvas.csproj",
+        "projectPath": "C:\\Projects\\cs\\Canvas\\Canvas\\Canvas.csproj",
         "packagesPath": "C:\\Users\\linus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\linus\\source\\repos\\Canvas\\Canvas\\obj\\",
+        "outputPath": "C:\\Projects\\cs\\Canvas\\Canvas\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

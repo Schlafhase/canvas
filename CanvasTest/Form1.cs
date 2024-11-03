@@ -11,7 +11,8 @@ namespace CanvasTest
         private Thread animation;
         private bool disposed = false;
 
-        object updateLocker = new();
+        private readonly object _updateLocker = new();
+        private readonly object _disposeLocker = new();
 
         public Form1()
         {
@@ -40,12 +41,23 @@ namespace CanvasTest
             animation = new Thread(
                 () =>
                 {
-                    while (!this.Disposing)
+                    while (!this.IsDisposed)
                     {
-                        //TODO: fix object disposed exception
-                        this.Invoke((MethodInvoker)(() => _relativeSquare.X = Math.Sin((DateTime.Now - startTime).TotalSeconds) / 2 + 0.5f));
-                        this.Invoke((MethodInvoker)(() => _relativeSquare.Y = Math.Cos((DateTime.Now - startTime).TotalSeconds) / 2 + 0.5f));
-                        Thread.Sleep(1);
+                        try
+                        {
+                            this.Invoke((MethodInvoker)(() =>
+                                _relativeSquare.X = Math.Sin((DateTime.Now - startTime).TotalMilliseconds / 1000f) / 2 +
+                                                    0.5f));
+                            this.Invoke((MethodInvoker)(() =>
+                                _relativeSquare.Y = Math.Cos((DateTime.Now - startTime).TotalMilliseconds / 1000f) / 2 +
+                                                    0.5f));
+                        }
+                        catch (ObjectDisposedException)
+                        {
+                            break;
+                        }
+
+                        Thread.Sleep(5);
                     }
                 });
             animation.Start();
@@ -63,7 +75,7 @@ namespace CanvasTest
 
         private void update()
         {
-            lock (updateLocker)
+            lock (_updateLocker)
             {
                 Image img = pictureBox1.Image;
                 using Graphics g = Graphics.FromImage(img);
