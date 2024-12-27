@@ -2,17 +2,19 @@
 
 namespace Canvas.Components.Interfaces
 {
-    public interface ICanvasComponent
+    public abstract class CanvasComponent
     {
         /// <summary>
         /// Parent of the component. The component should call the <c>OnUpdate</c> action of the parent when they need to be updated.
         /// </summary>
-        Canvas? Parent { get; set; }
-        bool SuppressUpdate { get; set; }
+        
+        public virtual Canvas? Parent { get; set; }
+
+        public virtual bool SuppressUpdate { get; set; } = false;
         /// <summary>
         /// Puts the component on a bitmap.
         /// </summary>
         /// <param name="g">Graphics of the bitmap to put the component on.</param>
-        void Put(Graphics g);
+        public abstract void Put(Graphics g);
     }
 }

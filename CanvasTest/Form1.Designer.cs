@@ -57,6 +57,7 @@
 			Text = "Form1";
 			Resize += Form1_Resize;
 			Load += Form1_Load;
+			FormClosing += Form1_FormClosing;
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 			ResumeLayout(false);
 		}

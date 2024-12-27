@@ -11,3 +11,16 @@ C:\Users\linus\source\repos\Canvas\Canvas\obj\Release\net6.0\Canvas.dll
 C:\Users\linus\source\repos\Canvas\Canvas\obj\Release\net6.0\refint\Canvas.dll
 C:\Users\linus\source\repos\Canvas\Canvas\obj\Release\net6.0\Canvas.pdb
 C:\Users\linus\source\repos\Canvas\Canvas\obj\Release\net6.0\ref\Canvas.dll
+C:\Projects\cs\Canvas\Canvas\bin\Release\net6.0\Canvas.deps.json
+C:\Projects\cs\Canvas\Canvas\bin\Release\net6.0\Canvas.dll
+C:\Projects\cs\Canvas\Canvas\bin\Release\net6.0\Canvas.pdb
+C:\Projects\cs\Canvas\Canvas\obj\Release\net6.0\Canvas.csproj.AssemblyReference.cache
+C:\Projects\cs\Canvas\Canvas\obj\Release\net6.0\Canvas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\cs\Canvas\Canvas\obj\Release\net6.0\Canvas.AssemblyInfoInputs.cache
+C:\Projects\cs\Canvas\Canvas\obj\Release\net6.0\Canvas.AssemblyInfo.cs
+C:\Projects\cs\Canvas\Canvas\obj\Release\net6.0\Canvas.csproj.CoreCompileInputs.cache
+C:\Projects\cs\Canvas\Canvas\obj\Release\net6.0\Canvas.sourcelink.json
+C:\Projects\cs\Canvas\Canvas\obj\Release\net6.0\Canvas.dll
+C:\Projects\cs\Canvas\Canvas\obj\Release\net6.0\refint\Canvas.dll
+C:\Projects\cs\Canvas\Canvas\obj\Release\net6.0\Canvas.pdb
+C:\Projects\cs\Canvas\Canvas\obj\Release\net6.0\ref\Canvas.dll

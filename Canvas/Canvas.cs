@@ -1,76 +1,21 @@
 ﻿using System.Drawing;
+using System.Runtime.Versioning;
 using Canvas.Components.Interfaces;
 
 namespace Canvas
 {
-    public class Canvas : ICanvasComponent
+    [SupportedOSPlatform("windows")]
+    public class Canvas : PositionedRectangleSizedComponent, IDisposable
     {
         #region Properties
+        private bool _disposed;
 
-        private int _x;
-        private int _y;
-
-        public int X
-        {
-            get => _x;
-            set
-            {
-                _x = value;
-
-                if (SuppressUpdate) return;
-                Parent?.Update();
-                Update();
-            }
-        }
-
-        public int Y
-        {
-            get => _y;
-            set
-            {
-                _y = value;
-
-                if (SuppressUpdate) return;
-                Parent?.Update();
-                Update();
-            }
-        }
-
-        private int _width;
-        private int _height;
-
-        public int Width
-        {
-            get => _width;
-            set
-            {
-                _width = value;
-
-                if (SuppressUpdate) return;
-                Parent?.Update();
-                Update();
-            }
-        }
-
-        public int Height
-        {
-            get => _height;
-            set
-            {
-                _height = value;
-
-                if (SuppressUpdate) return;
-                Parent?.Update();
-                Update();
-            }
-        }
-
-        public bool SuppressUpdate { get; set; } = false;
+        
         public Color BackgroundColor { get; set; } = Color.Transparent;
 
-        private List<ICanvasComponent> _children = new();
+        private List<CanvasComponent> _children = new();
 
-        public List<ICanvasComponent> Children
+        public List<CanvasComponent> Children
         {
             get => _children;
             set
@@ -80,21 +25,19 @@ namespace Canvas
             }
         }
 
-        public Canvas? Parent { get; set; }
-
         /// <summary>
         /// Children should call this method when they need to be updated.
         /// </summary>
         public Action? OnUpdate { private get; set; }
 
         public int FrameRate { get; set; } = 60;
-        private bool _updateQueued = false;
+        private bool _updateQueued;
         private Thread? _updateThread;
-        private SynchronizationContext _syncContext;
+        private SynchronizationContext? _syncContext;
 
         #endregion
 
-        public Canvas(int x, int y, int width, int height, List<ICanvasComponent> children)
+        public Canvas(int x, int y, int width, int height, List<CanvasComponent> children)
         {
             X = x;
             Y = y;
@@ -110,11 +53,11 @@ namespace Canvas
             Y = y;
             Width = width;
             Height = height;
-            Children = new List<ICanvasComponent>();
+            Children = new List<CanvasComponent>();
             initialize();
         }
 
-        public Canvas(int width, int height, List<ICanvasComponent> children)
+        public Canvas(int width, int height, List<CanvasComponent> children)
         {
             X = 0;
             Y = 0;
@@ -130,7 +73,7 @@ namespace Canvas
             Y = 0;
             Width = width;
             Height = height;
-            Children = new();
+            Children = new List<CanvasComponent>();
             initialize();
         }
         
@@ -139,32 +82,32 @@ namespace Canvas
             _syncContext = SynchronizationContext.Current;
             _updateThread = new Thread(() =>
             {
-                while (true)
+                while (!_disposed)
                 {
-                    _syncContext.Post(_ => update(), null);
+                    _syncContext?.Post(_ => update(), null);
                     Thread.Sleep(1000 / FrameRate);
                 }
             });
             _updateThread.Start();
         }
 
-        public void AddChild(ICanvasComponent child)
+        public void AddChild(CanvasComponent child)
         {
             Children.Add(child);
             child.Parent = this;
         }
 
-        public void RemoveChild(ICanvasComponent child)
+        public void RemoveChild(CanvasComponent child)
         {
             Children.Remove(child);
             child.Parent = null;
         }
-
-        public void Put(Graphics g)
+        
+        public override void Put(Graphics g)
         {
             using Bitmap bitmap = new Bitmap(Width, Height);
             using Graphics g2 = Graphics.FromImage(bitmap);
-            foreach (ICanvasComponent c in Children)
+            foreach (CanvasComponent c in Children)
             {
                 c.Put(g2);
             }
@@ -180,9 +123,19 @@ namespace Canvas
 
         private void update()
         {
-            if (!_updateQueued) return;
+            if (!_updateQueued)
+            {
+                return;
+            }
+
             OnUpdate?.Invoke();
             _updateQueued = false;
+        }
+        
+        public void Dispose()
+        {
+            _disposed = true;
+            GC.SuppressFinalize(this);
         }
     }
 }

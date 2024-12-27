@@ -1,14 +1,15 @@
 using Canvas.Components;
 using Canvas.Components.Interfaces;
+using Rectangle = Canvas.Components.Rectangle;
 
 namespace CanvasTest
 {
     public partial class Form1 : Form
     {
         private Canvas.Canvas _canvas;
-        private Square _square;
+        private Rectangle _rectangle;
         private BezierCurve _bezier;
-        private RelativePositionedComponent<Square> _relativeSquare;
+        private RelativePositionedComponent<Rectangle> _relativeSquare;
         private Thread animation;
         private bool disposed = false;
 
@@ -19,19 +20,23 @@ namespace CanvasTest
         {
             InitializeComponent();
 
-            _canvas = new(Width, Height);
+            _canvas = new Canvas.Canvas(Width, Height);
             pictureBox1.Image = new Bitmap(Width, Height);
 
-            _square = new(0, 0, 20, 20, Color.Red);
-            _relativeSquare = new(_square);
+            _rectangle = new(0, 0, 20, 20, Color.Red);
+            _relativeSquare = new(_rectangle);
             _relativeSquare.X = 0.5f;
             _relativeSquare.Y = 0.5f;
             _relativeSquare.Centered = true;
             
-            _bezier = new BezierCurve(new List<Point>() {new Point(400, 400), new Point(100, 100), new Point(200, 0), new Point(300, 100)});
+            GlowDot glowDot = new(100, 100, 30, 70, Color.Red);
+            
+            
+            _bezier = new BezierCurve(new List<Point>() {new Point(400, 40), new Point(100, 100), new Point(200, 0), new Point(300, 100)});
 
             _canvas.AddChild(_relativeSquare);
             _canvas.AddChild(_bezier);
+            _canvas.AddChild(glowDot);
             _canvas.BackgroundColor = Color.Green;
             _canvas.OnUpdate = update;
         }
@@ -74,16 +79,29 @@ namespace CanvasTest
         private void Form1_Resize(object sender, EventArgs e)
         {
             Size size = new(ClientSize.Width, ClientSize.Height);
-            if (size.Height == 0) return;
+            if (size.Height == 0)
+            {
+                return;
+            }
+
             pictureBox1.Size = size;
             pictureBox1.Image = new Bitmap(pictureBox1.Image, size);
             _canvas.Width = ClientSize.Width;
             _canvas.Height = ClientSize.Height;
         }
+        
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _canvas.Dispose();
+        }
 
         private void update()
         {
-            if (disposed) return;
+            if (disposed)
+            {
+                return;
+            }
+
             lock (_updateLocker)
             {
                 Image img = pictureBox1.Image;

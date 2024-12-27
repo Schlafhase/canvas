@@ -46,7 +46,10 @@
           "System.Drawing.Common": "8.0.10"
         },
         "runtime": {
-          "Canvas.dll": {}
+          "Canvas.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "NzNqAFbca8c=",
+  "dgSpecHash": "ytlx0AGO+8g=",
   "success": true,
   "projectFilePath": "C:\\Projects\\cs\\Canvas\\Canvas\\Canvas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\linus\\.nuget\\packages\\microsoft.win32.systemevents\\8.0.0\\microsoft.win32.systemevents.8.0.0.nupkg.sha512",
-    "C:\\Users\\linus\\.nuget\\packages\\system.drawing.common\\8.0.10\\system.drawing.common.8.0.10.nupkg.sha512"
+    "C:\\Users\\linus\\.nuget\\packages\\system.drawing.common\\8.0.10\\system.drawing.common.8.0.10.nupkg.sha512",
+    "C:\\Users\\linus\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\linus\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\linus\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512"
   ],
   "logs": []
 }

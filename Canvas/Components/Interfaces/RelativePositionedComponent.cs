@@ -2,11 +2,11 @@
 
 namespace Canvas.Components.Interfaces;
 
-public class RelativePositionedComponent<T> : ICanvasComponent where T : IPositionedComponent
+public class RelativePositionedComponent<T> : CanvasComponent where T : PositionedComponent
 {
-    private Rectangle _boundaries;
+    private System.Drawing.Rectangle _boundaries;
 
-    public Rectangle Boundaries
+    public System.Drawing.Rectangle Boundaries
     {
         get => _boundaries;
         set
@@ -26,7 +26,7 @@ public class RelativePositionedComponent<T> : ICanvasComponent where T : IPositi
         {
             _x = value;
             _component.X = (int)Math.Round((Boundaries.Width - Boundaries.X) * _x + Boundaries.X);
-            if (Centered && _component is IRectangleSizedComponent sizedComponent)
+            if (Centered && _component is RectangleSizedComponent sizedComponent)
             {
                 _component.X -= sizedComponent.Width / 2;
             }
@@ -42,7 +42,7 @@ public class RelativePositionedComponent<T> : ICanvasComponent where T : IPositi
         {
             _y = value;
             _component.Y = (int)Math.Round((Boundaries.Height - Boundaries.Y) * _y + Boundaries.Y);
-            if (Centered && _component is IRectangleSizedComponent sizedComponent)
+            if (Centered && _component is RectangleSizedComponent sizedComponent)
             {
                 _component.Y -= sizedComponent.Height / 2;
             }
@@ -50,17 +50,20 @@ public class RelativePositionedComponent<T> : ICanvasComponent where T : IPositi
     }
 
     public int Margin { get; set; }
-    public bool SuppressUpdate
+    public override bool SuppressUpdate
     {
         get => _component.SuppressUpdate;
         set => _component.SuppressUpdate = value;
     }
 
+    /// <summary>
+    /// Only works with <see cref="RectangleSizedComponent"/>.
+    /// </summary>
     public bool Centered { get; set; } = false;
 
-    private T _component;
+    private readonly T _component;
 
-    public Canvas? Parent
+    public override Canvas? Parent
     {
         get => _component.Parent;
         set => _component.Parent = value;
@@ -70,7 +73,7 @@ public class RelativePositionedComponent<T> : ICanvasComponent where T : IPositi
     {
         _component = component;
         this.Margin = margin;
-        _boundaries = new Rectangle(0, 0, 0, 0);
+        _boundaries = new System.Drawing.Rectangle(0, 0, 0, 0);
         X = 0f;
         Y = 0f;
         updateBoundaries();
@@ -80,11 +83,11 @@ public class RelativePositionedComponent<T> : ICanvasComponent where T : IPositi
     {
         if (Parent is not null)
         {
-            Boundaries = new Rectangle(Margin, Margin, Parent.Width - Margin, Parent.Height - Margin);
+            Boundaries = new System.Drawing.Rectangle(Margin, Margin, Parent.Width - Margin, Parent.Height - Margin);
         }
     }
 
-    public void Put(Graphics g)
+    public override void Put(Graphics g)
     {
         SuppressUpdate = true;
         updateBoundaries();
