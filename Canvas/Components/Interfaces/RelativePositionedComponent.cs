@@ -26,9 +26,9 @@ public class RelativePositionedComponent<T> : CanvasComponent where T : Position
         {
             _x = value;
             _component.X = (int)Math.Round((Boundaries.Width - Boundaries.X) * _x + Boundaries.X);
-            if (Centered && _component is RectangleSizedComponent sizedComponent)
+            if (Centered && _component is PositionedRectangleSizedComponent positionedSizedComponent)
             {
-                _component.X -= sizedComponent.Width / 2;
+                _component.X -= positionedSizedComponent.Width / 2;
             }
         }
     }
@@ -42,9 +42,9 @@ public class RelativePositionedComponent<T> : CanvasComponent where T : Position
         {
             _y = value;
             _component.Y = (int)Math.Round((Boundaries.Height - Boundaries.Y) * _y + Boundaries.Y);
-            if (Centered && _component is RectangleSizedComponent sizedComponent)
+            if (Centered && _component is PositionedRectangleSizedComponent positionedSizedComponent)
             {
-                _component.Y -= sizedComponent.Height / 2;
+                _component.Y -= positionedSizedComponent.Height / 2;
             }
         }
     }

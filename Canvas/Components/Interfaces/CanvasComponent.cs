@@ -1,7 +1,9 @@
 ﻿using System.Drawing;
+using System.Runtime.Versioning;
 
 namespace Canvas.Components.Interfaces
 {
+    [SupportedOSPlatform("windows")]
     public abstract class CanvasComponent
     {
         /// <summary>
@@ -10,7 +12,8 @@ namespace Canvas.Components.Interfaces
         
         public virtual Canvas? Parent { get; set; }
 
-        public virtual bool SuppressUpdate { get; set; } = false;
+        public virtual bool SuppressUpdate { get; set; }
+
         /// <summary>
         /// Puts the component on a bitmap.
         /// </summary>
