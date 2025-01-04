@@ -23,12 +23,14 @@ namespace CanvasTest
             _canvas = new Canvas.Canvas(Width, Height);
             pictureBox1.Image = new Bitmap(Width, Height);
 
-            _rectangle = new(0, 0, 20, 20, Color.Red);
-            _relativeSquare = new(_rectangle);
-            _relativeSquare.X = 0.5f;
-            _relativeSquare.Y = 0.5f;
-            _relativeSquare.Centered = true;
-            
+            _rectangle = new Rectangle(0, 0, 20, 20, Color.Red);
+            _relativeSquare = new RelativePositionedComponent<Rectangle>(_rectangle)
+            {
+                X = 0.5f,
+                Y = 0.5f,
+                Centered = true
+            };
+
             GlowDot glowDot = new(100, 100, 30, 70, Color.Red);
             
             

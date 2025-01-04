@@ -1,7 +1,9 @@
 ﻿using System.Drawing;
+using System.Runtime.Versioning;
 
 namespace Canvas.Components.Interfaces;
 
+[SupportedOSPlatform("windows")]
 public class RelativePositionedComponent<T> : CanvasComponent where T : PositionedComponent
 {
     private System.Drawing.Rectangle _boundaries;

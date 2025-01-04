@@ -1,9 +1,11 @@
 ﻿using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Runtime.Versioning;
 using Canvas.Components.Interfaces;
 
 namespace Canvas.Components;
 
+[SupportedOSPlatform("windows")]
 public class Circle : PositionedSizedComponent
 {
     #region Properties

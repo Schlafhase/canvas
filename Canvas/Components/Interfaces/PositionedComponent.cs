@@ -1,5 +1,8 @@
-﻿namespace Canvas.Components.Interfaces
+﻿using System.Runtime.Versioning;
+
+namespace Canvas.Components.Interfaces
 {
+	[SupportedOSPlatform("windows")]
 	public abstract class PositionedComponent : CanvasComponent
 	{
 		int _x;

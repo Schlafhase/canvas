@@ -5,7 +5,7 @@ using Canvas.Components.Interfaces;
 namespace Canvas
 {
     [SupportedOSPlatform("windows")]
-    public class Canvas : PositionedRectangleSizedComponent, IDisposable
+    public sealed class Canvas : PositionedRectangleSizedComponent, IDisposable
     {
         #region Properties
         private bool _disposed;
@@ -24,10 +24,7 @@ namespace Canvas
                 _children.ForEach(c => c.Parent = this);
             }
         }
-
-        /// <summary>
-        /// Children should call this method when they need to be updated.
-        /// </summary>
+        
         public Action? OnUpdate { private get; set; }
 
         public int FrameRate { get; set; } = 60;
@@ -79,7 +76,7 @@ namespace Canvas
         
         private void initialize()
         {
-            _syncContext = SynchronizationContext.Current;
+            UpdateSynchronizationContext();
             _updateThread = new Thread(() =>
             {
                 while (!_disposed)
@@ -89,6 +86,19 @@ namespace Canvas
                 }
             });
             _updateThread.Start();
+        }
+        
+        public void UpdateSynchronizationContext()
+        {
+            _syncContext = SynchronizationContext.Current;
+
+            foreach (CanvasComponent child in Children)
+            {
+                if (child is Canvas canvas)
+                {
+                    canvas.UpdateSynchronizationContext();
+                }
+            }
         }
 
         public void AddChild(CanvasComponent child)
@@ -105,6 +115,10 @@ namespace Canvas
         
         public override void Put(Graphics g)
         {
+            if (Width <= 0 || Height <= 0)
+            {
+                return;
+            }
             using Bitmap bitmap = new Bitmap(Width, Height);
             using Graphics g2 = Graphics.FromImage(bitmap);
             foreach (CanvasComponent c in Children)
@@ -112,10 +126,14 @@ namespace Canvas
                 c.Put(g2);
             }
 
-            g.Clear(BackgroundColor);
+            g.Clear(Color.Transparent);
+            g.FillRectangle(new SolidBrush(BackgroundColor), X, Y, Width, Height);
             g.DrawImage(bitmap, X, Y);
         }
 
+        /// <summary>
+        /// Children should call this method when they need to be updated.
+        /// </summary>
         public void Update()
         {
             _updateQueued = true;
@@ -131,11 +149,15 @@ namespace Canvas
             OnUpdate?.Invoke();
             _updateQueued = false;
         }
-        
+
         public void Dispose()
         {
             _disposed = true;
-            GC.SuppressFinalize(this);
+        }
+        
+        ~Canvas()
+        {
+            Dispose();
         }
     }
 }

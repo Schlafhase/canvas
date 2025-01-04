@@ -1,8 +1,10 @@
-﻿namespace Canvas.Components.Interfaces;
+﻿using System.Runtime.Versioning;
 
+namespace Canvas.Components.Interfaces;
 /// <summary>
 /// For components that have both a position and a size.
 /// </summary>
+[SupportedOSPlatform("windows")]
 public abstract class PositionedSizedComponent : PositionedComponent
 {
 	protected int _size;
@@ -17,8 +19,7 @@ public abstract class PositionedSizedComponent : PositionedComponent
 		{
 			_size = value;
 			if (!SuppressUpdate)
-			{
-				Parent?.Update();
+			{ Parent?.Update();
 			}
 		}
 	}
