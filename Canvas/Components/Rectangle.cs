@@ -1,28 +1,29 @@
 ﻿using System.Drawing;
 using System.Runtime.Versioning;
 using Canvas.Components.Interfaces;
+using Canvas.Components.Interfaces.Mix;
 
-namespace Canvas.Components
+namespace Canvas.Components;
+
+[SupportedOSPlatform("windows")]
+public sealed class Rectangle : PositionedRectangleSizedComponent
 {
-    [SupportedOSPlatform("windows")]
-    public sealed class Rectangle : PositionedRectangleSizedComponent
-    {
-        public Color Color { get; set; }
-        private readonly Brush _brush;
+	private readonly Brush _brush;
 
-        public Rectangle(int x, int y, int width, int height, Color color)
-        {
-            X = x;
-            Y = y;
-            Width = width;
-            Height = height;
-            Color = color;
-            _brush = new SolidBrush(Color);
-        }
+	public Rectangle(int x, int y, int width, int height, Color color)
+	{
+		X = x;
+		Y = y;
+		Width = width;
+		Height = height;
+		Color = color;
+		_brush = new SolidBrush(Color);
+	}
 
-        public override void Put(Graphics g)
-        {
-            g.FillRectangle(_brush, X, Y, Width, Height);
-        }
-    }
+	public Color Color { get; set; }
+
+	public override void Put(Graphics g)
+	{
+		g.FillRectangle(_brush, X, Y, Width, Height);
+	}
 }

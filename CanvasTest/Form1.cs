@@ -1,116 +1,131 @@
 using Canvas.Components;
-using Canvas.Components.Interfaces;
-using Rectangle = Canvas.Components.Rectangle;
+using Canvas.Components.Interfaces.Relative;
 
-namespace CanvasTest
+namespace CanvasTest;
+
+public partial class Form1 : Form
 {
-    public partial class Form1 : Form
-    {
-        private Canvas.Canvas _canvas;
-        private Rectangle _rectangle;
-        private BezierCurve _bezier;
-        private RelativePositionedComponent<Rectangle> _relativeSquare;
-        private Thread animation;
-        private bool disposed = false;
+	private readonly object _disposeLocker = new();
 
-        private readonly object _updateLocker = new();
-        private readonly object _disposeLocker = new();
+	private readonly object _updateLocker = new();
+	private readonly BezierCurve _bezier;
+	private readonly Canvas.Canvas _canvas;
+	private readonly BitmapImage _rectangle;
+	private readonly RelativeRectangleSizedKeepAspectRatioRelativePositionedComponent<BitmapImage> _relativeSquare;
+	private readonly RelativeSizedRelativePositionedComponent<Text> _text;
+	private Thread animation;
+	private bool disposed;
 
-        public Form1()
-        {
-            InitializeComponent();
+	public Form1()
+	{
+		InitializeComponent();
 
-            _canvas = new Canvas.Canvas(Width, Height);
-            pictureBox1.Image = new Bitmap(Width, Height);
+		_canvas = new Canvas.Canvas(Width, Height);
+		pictureBox1.Image = new Bitmap(Width, Height);
 
-            _rectangle = new Rectangle(0, 0, 20, 20, Color.Red);
-            _relativeSquare = new RelativePositionedComponent<Rectangle>(_rectangle)
-            {
-                X = 0.5f,
-                Y = 0.5f,
-                Centered = true
-            };
+		_rectangle = new BitmapImage("test.jpg", 0, 0, 1000, 100);
+		_relativeSquare = new RelativeRectangleSizedKeepAspectRatioRelativePositionedComponent<BitmapImage>(_rectangle)
+		{
+			X = 0.1,
+			Y = 0.1,
+			Size = 0.1,
+			AspectRatio = 2
+		};
 
-            GlowDot glowDot = new(100, 100, 30, 70, Color.Red);
-            
-            
-            _bezier = new BezierCurve(new List<Point>() {new Point(400, 40), new Point(100, 100), new Point(200, 0), new Point(300, 100)});
+		GlowDot glowDot = new(100, 100, 30, 70, Color.Red);
 
-            _canvas.AddChild(_relativeSquare);
-            _canvas.AddChild(_bezier);
-            _canvas.AddChild(glowDot);
-            _canvas.BackgroundColor = Color.Green;
-            _canvas.OnUpdate = update;
-        }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            Form1_Resize(sender, e);
-            update();
+		_bezier = new BezierCurve(new List<Point> { new(400, 40), new(100, 100), new(200, 0), new(300, 100) });
 
-            DateTime startTime = DateTime.Now;
-            animation = new Thread(
-                () =>
-                {
-                    while (!this.IsDisposed)
-                    {
-                        try
-                        {
-                            this.Invoke((MethodInvoker)(() =>
-                                _relativeSquare.X = Math.Sin((DateTime.Now - startTime).TotalMilliseconds / 1000f) / 2 +
-                                                    0.5f));
-                            this.Invoke((MethodInvoker)(() =>
-                                _relativeSquare.Y = Math.Cos((DateTime.Now - startTime).TotalMilliseconds / 1000f) / 2 +
-                                                    0.5f));
-                            
-                            this.Invoke((MethodInvoker)(() =>
-                                _bezier.Points[1] = new Point((int) (100 * Math.Sin((DateTime.Now - startTime).TotalMilliseconds / 1000f)),
-                                    (int) (100 * Math.Cos((DateTime.Now - startTime).TotalMilliseconds / 1000f)))));
-                        }
-                        catch (ObjectDisposedException)
-                        {
-                            break;
-                        }
+		Text text = new("hello world", FontFamily.GenericMonospace, 50);
+		_text = new RelativeSizedRelativePositionedComponent<Text>(text, RelativeSizingOptions.Width)
+		{
+			X = 0.1d,
+			Y = 0.1d,
+			Size = 0.06
+		};
 
-                        Thread.Sleep(1);
-                    }
-                });
-            animation.Start();
-        }
 
-        private void Form1_Resize(object sender, EventArgs e)
-        {
-            Size size = new(ClientSize.Width, ClientSize.Height);
-            if (size.Height == 0)
-            {
-                return;
-            }
+		_canvas.AddChild(_relativeSquare);
+		_canvas.AddChild(_bezier);
+		_canvas.AddChild(_text);
+		_canvas.AddChild(glowDot);
+		_canvas.BackgroundColor = Color.Green;
+		_canvas.OnUpdate = update;
+	}
 
-            pictureBox1.Size = size;
-            pictureBox1.Image = new Bitmap(pictureBox1.Image, size);
-            _canvas.Width = ClientSize.Width;
-            _canvas.Height = ClientSize.Height;
-        }
-        
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            _canvas.Dispose();
-        }
+	private void Form1_Load(object sender, EventArgs e)
+	{
+		Form1_Resize(sender, e);
+		update();
 
-        private void update()
-        {
-            if (disposed)
-            {
-                return;
-            }
+		DateTime startTime = DateTime.Now;
+		animation = new Thread(
+			() =>
+			{
+				while (!IsDisposed)
+				{
+					try
+					{
+						// Invoke((MethodInvoker)(() =>
+						// 		   _relativeSquare.X =
+						// 			   Math.Sin((DateTime.Now - startTime).TotalMilliseconds / 1000f) / 2 +
+						// 			   0.5f));
+						// Invoke((MethodInvoker)(() =>
+						// 		   _relativeSquare.Y =
+						// 			   Math.Cos((DateTime.Now - startTime).TotalMilliseconds / 1000f) / 2 +
+						// 			   0.5f));
 
-            lock (_updateLocker)
-            {
-                Image img = pictureBox1.Image;
-                using Graphics g = Graphics.FromImage(img);
-                _canvas.Put(g);
-                pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Image = img));
-            }
-        }
-    }
+						Invoke((MethodInvoker)(() =>
+								   _bezier.Points[1] = new Point(
+									   (int)(100 * Math.Sin((DateTime.Now - startTime).TotalMilliseconds / 1000f)),
+									   (int)(100 * Math.Cos((DateTime.Now - startTime).TotalMilliseconds / 1000f)))));
+					}
+					catch (ObjectDisposedException)
+					{
+						break;
+					}
+
+					Thread.Sleep(1);
+				}
+			});
+		animation.Start();
+	}
+
+	private void Form1_Resize(object sender, EventArgs e)
+	{
+		Size size = new(ClientSize.Width, ClientSize.Height);
+
+		if (size.Height == 0)
+		{
+			return;
+		}
+
+		pictureBox1.Size = size;
+		pictureBox1.Image = new Bitmap(pictureBox1.Image, size);
+		_canvas.Width = ClientSize.Width;
+		_canvas.Height = ClientSize.Height;
+		_canvas.Update();
+	}
+
+	private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+	{
+		_canvas.Dispose();
+	}
+
+	private void update()
+	{
+		if (disposed)
+		{
+			return;
+		}
+
+		lock (_updateLocker)
+		{
+			Image img = pictureBox1.Image;
+			using Graphics g = Graphics.FromImage(img);
+			_canvas.Put(g);
+			pictureBox1.Invoke((MethodInvoker)(() => pictureBox1.Image = img));
+		}
+	}
 }

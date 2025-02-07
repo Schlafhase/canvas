@@ -1,12 +1,49 @@
 ﻿using System.Drawing;
 using System.Runtime.Versioning;
 using Canvas.Components.Interfaces;
+using Canvas.Components.Interfaces.Mix;
 
 namespace Canvas.Components;
 
 [SupportedOSPlatform("windows")]
 public sealed class GlowDot : PositionedSizedComponent
 {
+	public GlowDot(int x, int y, int radius, int glowRadius, Color color, int alpha = 255)
+	{
+		_innerCircle = new Circle(x, y, radius, Brushes.White);
+		_innerGlow = new Circle(x, y, glowRadius / 2, Brushes.White);
+		_glow = new Circle(x, y, glowRadius, Brushes.White);
+
+		const int brightness = 170;
+
+		_glowColor = Color.FromArgb(
+			alpha,
+			Math.Clamp(color.R + brightness, 0, 255),
+			Math.Clamp(color.G + brightness, 0, 255),
+			Math.Clamp(color.B + brightness, 0, 255));
+
+		_innerGlowColor = Color.FromArgb(
+			alpha,
+			Math.Clamp(color.R + brightness / 2, 0, 255),
+			Math.Clamp(color.G + brightness / 2, 0, 255),
+			Math.Clamp(color.B + brightness / 2, 0, 255));
+
+		X = x;
+		Y = y;
+		Radius = radius;
+		Color = color;
+	}
+
+	public override void Put(Graphics g)
+	{
+		_innerCircle.SetGlow(_glowColor, 0.8f);
+		_innerGlow.SetGlow(_innerGlowColor, 0, true, 30);
+		_glow.SetGlow(Color, 0, true, 30);
+		_glow.Put(g);
+		_innerGlow.Put(g);
+		_innerCircle.Put(g);
+	}
+
 	#region Properties
 
 	public override Canvas? Parent
@@ -57,40 +94,4 @@ public sealed class GlowDot : PositionedSizedComponent
 	private readonly Circle _glow;
 
 	#endregion
-
-	public GlowDot(int x, int y, int radius, int glowRadius, Color color, int alpha = 255)
-	{
-		_innerCircle = new Circle(x, y, radius, Brushes.White);
-		_innerGlow = new Circle(x, y, glowRadius / 2, Brushes.White);
-		_glow = new Circle(x, y, glowRadius, Brushes.White);
-
-		const int brightness = 170;
-
-		_glowColor = Color.FromArgb(
-			alpha,
-			Math.Clamp(color.R + brightness, 0, 255),
-			Math.Clamp(color.G + brightness, 0, 255),
-			Math.Clamp(color.B + brightness, 0, 255));
-
-		_innerGlowColor = Color.FromArgb(
-			alpha,
-			Math.Clamp(color.R + brightness / 2, 0, 255),
-			Math.Clamp(color.G + brightness / 2, 0, 255),
-			Math.Clamp(color.B + brightness / 2, 0, 255));
-
-		X = x;
-		Y = y;
-		Radius = radius;
-		Color = color;
-	}
-
-	public override void Put(Graphics g)
-	{
-		_innerCircle.SetGlow(_glowColor, 0.8f);
-		_innerGlow.SetGlow(_innerGlowColor, 0, true, 30);
-		_glow.SetGlow(Color, 0, true, 30);
-		_glow.Put(g);
-		_innerGlow.Put(g);
-		_innerCircle.Put(g);
-	}
 }
