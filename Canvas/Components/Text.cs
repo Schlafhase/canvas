@@ -1,9 +1,11 @@
 ﻿using System.Drawing;
+using System.Runtime.Versioning;
 using Canvas.Components.Interfaces;
 using Canvas.Components.Interfaces.Mix;
 
 namespace Canvas.Components;
 
+[SupportedOSPlatform("windows")]
 public class Text : PositionedSizedComponent
 {
 	public Text(string content, FontFamily fontFamily, int fontSize, int x = 0, int y = 0, Brush? brush = null)

@@ -12,7 +12,7 @@ public enum RelativeSizingOptions
 }
 
 [SupportedOSPlatform("windows")]
-public sealed class RelativeSizedComponent<T> : CanvasComponent where T : CanvasComponent, ISizedComponent
+public sealed class RelativeSizedComponent<T> : CanvasComponent where T : ICanvasComponent, ISizedComponent
 {
 	private readonly T _component;
 	private readonly RelativeSizingOptions _sizingOptions;
@@ -81,7 +81,7 @@ public sealed class RelativeSizedComponent<T> : CanvasComponent where T : Canvas
 	{
 		if (Parent is not null)
 		{
-			Boundaries = new System.Drawing.Rectangle(Margin, Margin, Parent.Width - Margin, Parent.Height - Margin);
+			Boundaries = new System.Drawing.Rectangle(Margin, Margin, Parent.Width - 2*Margin, Parent.Height - 2*Margin);
 		}
 	}
 

@@ -7,7 +7,7 @@ using Canvas.Components.Interfaces.RectangleSized;
 namespace Canvas.Components.Interfaces.Relative;
 
 [SupportedOSPlatform("windows")]
-public class RelativePositionedComponent<T> : CanvasComponent where T : CanvasComponent, IPositionedComponent
+public class RelativePositionedComponent<T> : CanvasComponent where T : ICanvasComponent, IPositionedComponent
 {
 	protected readonly T _component;
 	protected System.Drawing.Rectangle _boundaries;
@@ -20,9 +20,9 @@ public class RelativePositionedComponent<T> : CanvasComponent where T : CanvasCo
 		_component = component;
 		Margin = margin;
 		_boundaries = new System.Drawing.Rectangle(0, 0, 0, 0);
+		updateBoundaries();
 		X = 0f;
 		Y = 0f;
-		updateBoundaries();
 	}
 
 	public virtual System.Drawing.Rectangle Boundaries
@@ -57,7 +57,7 @@ public class RelativePositionedComponent<T> : CanvasComponent where T : CanvasCo
 		set
 		{
 			_y = value;
-			_component.Y = (int)Math.Round((Boundaries.Height - Boundaries.Y) * _y + Boundaries.Y);
+			_component.Y = (int)((Boundaries.Height - Boundaries.Y) * _y + Boundaries.Y);
 
 			if (Centered && _component is PositionedRectangleSizedComponent positionedSizedComponent)
 			{
@@ -83,14 +83,17 @@ public class RelativePositionedComponent<T> : CanvasComponent where T : CanvasCo
 	public override Canvas? Parent
 	{
 		get => _component.Parent;
-		set => _component.Parent = value;
+		set
+		{
+			_component.Parent = value;
+		}
 	}
 
 	private void updateBoundaries()
 	{
 		if (Parent is not null)
 		{
-			Boundaries = new System.Drawing.Rectangle(Margin, Margin, Parent.Width - Margin, Parent.Height - Margin);
+			Boundaries = new System.Drawing.Rectangle(Margin, Margin, Parent.Width - 2*Margin, Parent.Height - 2*Margin);
 		}
 	}
 
@@ -99,6 +102,7 @@ public class RelativePositionedComponent<T> : CanvasComponent where T : CanvasCo
 		SuppressUpdate = true;
 		updateBoundaries();
 		SuppressUpdate = false;
+		
 		_component.Put(g);
 	}
 }

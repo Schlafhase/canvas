@@ -3,7 +3,7 @@ using Canvas.Components.Interfaces.RectangleSized;
 
 namespace Canvas.Components.Interfaces.Relative;
 
-public class RelativeRectangleSizedKeepAspectRatioComponent<T> : CanvasComponent where T : CanvasComponent, IRectangleSizedComponent
+public class RelativeRectangleSizedKeepAspectRatioComponent<T> : CanvasComponent where T : ICanvasComponent, IRectangleSizedComponent
 {
 	protected readonly T _component;
 	protected System.Drawing.Rectangle _boundaries;
@@ -73,7 +73,7 @@ public class RelativeRectangleSizedKeepAspectRatioComponent<T> : CanvasComponent
 	{
 		if (Parent is not null)
 		{
-			Boundaries = new System.Drawing.Rectangle(Margin, Margin, Parent.Width - Margin, Parent.Height - Margin);
+			Boundaries = new System.Drawing.Rectangle(Margin, Margin, Parent.Width - 2*Margin, Parent.Height - 2*Margin);
 		}
 	}
 

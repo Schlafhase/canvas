@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Runtime.Versioning;
 using Canvas.Components.Interfaces;
 using Canvas.Components.Interfaces.Mix;
@@ -101,12 +102,13 @@ public sealed class Canvas : PositionedRectangleSizedComponent, IDisposable
 
 		using Bitmap bitmap = new(Width, Height);
 		using Graphics g2 = Graphics.FromImage(bitmap);
-
+		g2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+		
 		foreach (CanvasComponent c in Children)
 		{
 			c.Put(g2);
 		}
-
+		
 		g.Clear(Color.Transparent);
 		g.FillRectangle(new SolidBrush(BackgroundColor), X, Y, Width, Height);
 		g.DrawImage(bitmap, X, Y);

@@ -10,8 +10,8 @@ namespace Canvas.Components.Interfaces.Mix;
 [SupportedOSPlatform("windows")]
 public abstract class PositionedRectangleSizedComponent : PositionedComponent, IRectangleSizedComponent
 {
-	private int _height;
-	private int _width;
+	protected int _height;
+	protected int _width;
 
 	/// <summary>
 	///     Width of the component.

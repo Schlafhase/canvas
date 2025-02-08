@@ -4,7 +4,7 @@ using Canvas.Components.Interfaces.RectangleSized;
 namespace Canvas.Components.Interfaces.Relative;
 
 public class RelativeRectangleSizedKeepAspectRatioRelativePositionedComponent<T> : RelativePositionedComponent<T>
-	where T : CanvasComponent, IRectangleSizedComponent, IPositionedComponent
+	where T : ICanvasComponent, IRectangleSizedComponent, IPositionedComponent
 {
 	public RelativeRectangleSizedKeepAspectRatioRelativePositionedComponent(T component, int margin = 0) : base(component, margin) { }
 	

@@ -36,12 +36,16 @@ public sealed class GlowDot : PositionedSizedComponent
 
 	public override void Put(Graphics g)
 	{
+		g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+		
 		_innerCircle.SetGlow(_glowColor, 0.8f);
 		_innerGlow.SetGlow(_innerGlowColor, 0, true, 30);
 		_glow.SetGlow(Color, 0, true, 30);
 		_glow.Put(g);
 		_innerGlow.Put(g);
 		_innerCircle.Put(g);
+		
+		g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
 	}
 
 	#region Properties

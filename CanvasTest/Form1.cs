@@ -1,5 +1,6 @@
 using Canvas.Components;
 using Canvas.Components.Interfaces.Relative;
+using Rectangle = Canvas.Components.Rectangle;
 
 namespace CanvasTest;
 
@@ -13,7 +14,7 @@ public partial class Form1 : Form
 	private readonly BitmapImage _rectangle;
 	private readonly RelativeRectangleSizedKeepAspectRatioRelativePositionedComponent<BitmapImage> _relativeSquare;
 	private readonly RelativeSizedRelativePositionedComponent<Text> _text;
-	private Thread animation;
+	private Thread? animation;
 	private bool disposed;
 
 	public Form1()
@@ -23,12 +24,12 @@ public partial class Form1 : Form
 		_canvas = new Canvas.Canvas(Width, Height);
 		pictureBox1.Image = new Bitmap(Width, Height);
 
-		_rectangle = new BitmapImage("test.jpg", 0, 0, 1000, 100);
+		_rectangle = new BitmapImage("C:\\\\Users\\\\linus\\\\OneDrive\\\\Pictures\\\\touching grass.jpg", 0, 0, 1000, 100);
 		_relativeSquare = new RelativeRectangleSizedKeepAspectRatioRelativePositionedComponent<BitmapImage>(_rectangle)
 		{
-			X = 0.1,
-			Y = 0.1,
-			Size = 0.1,
+			X = 0,
+			Y = 0.5,
+			Size = 0.5,
 			AspectRatio = 2
 		};
 
@@ -50,7 +51,8 @@ public partial class Form1 : Form
 		_canvas.AddChild(_bezier);
 		_canvas.AddChild(_text);
 		_canvas.AddChild(glowDot);
-		_canvas.BackgroundColor = Color.Green;
+		_canvas.BackgroundColor = Color.Blue;
+		
 		_canvas.OnUpdate = update;
 	}
 

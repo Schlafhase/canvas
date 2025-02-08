@@ -5,58 +5,59 @@ using Canvas.Components.Interfaces.RectangleSized;
 namespace Canvas.Components.Interfaces.Relative;
 
 [SupportedOSPlatform("windows")]
-public sealed class RelativeRectangleSizedComponent<T> : CanvasComponent where T : CanvasComponent, IRectangleSizedComponent
+public sealed class RelativeRectangleSizedComponent<T> : CanvasComponent
+	where T : ICanvasComponent, IRectangleSizedComponent
 {
-    private readonly T _component;
-    private System.Drawing.Rectangle _boundaries;
+	private readonly T _component;
+	private System.Drawing.Rectangle _boundaries;
 
-    private double _width;
-    private double _height;
+	private double _width;
+	private double _height;
 
-    public System.Drawing.Rectangle Boundaries
-    {
-        get => _boundaries;
-        set
-        {
-            _boundaries = value;
-            Width = _width;
-            Height = _height;
-        }
-    }
+	public System.Drawing.Rectangle Boundaries
+	{
+		get => _boundaries;
+		set
+		{
+			_boundaries = value;
+			Width = _width;
+			Height = _height;
+		}
+	}
 
-    public double Width
-    {
-        get => _width;
-        set 
-        {
-            _width = value;
-            _component.Width = (int)(_boundaries.Width * _width);
-        }
-    }
+	public double Width
+	{
+		get => _width;
+		set
+		{
+			_width = value;
+			_component.Width = (int)(_boundaries.Width * _width);
+		}
+	}
 
-    public double Height
-    {
-        get => _height;
-        set
-        {
-            _height = value;
-            _component.Height = (int)(_boundaries.Height * _height);
-        }
-    }
+	public double Height
+	{
+		get => _height;
+		set
+		{
+			_height = value;
+			_component.Height = (int)(_boundaries.Height * _height);
+		}
+	}
 
-    public int Margin { get; set; }
+	public int Margin { get; set; }
 
-    public override bool SuppressUpdate 
-    {
-        get => _component.SuppressUpdate;
-        set => _component.SuppressUpdate = value;
-    }
+	public override bool SuppressUpdate
+	{
+		get => _component.SuppressUpdate;
+		set => _component.SuppressUpdate = value;
+	}
 
-    public override Canvas? Parent
-    {
-        get => _component.Parent;
-        set => _component.Parent = value;
-    }
+	public override Canvas? Parent
+	{
+		get => _component.Parent;
+		set => _component.Parent = value;
+	}
 
 	public RelativeRectangleSizedComponent(T component, int margin = 0)
 	{
@@ -68,11 +69,12 @@ public sealed class RelativeRectangleSizedComponent<T> : CanvasComponent where T
 		updateBoundaries();
 	}
 
-    private void updateBoundaries()
+	private void updateBoundaries()
 	{
 		if (Parent is not null)
 		{
-			Boundaries = new System.Drawing.Rectangle(Margin, Margin, Parent.Width - Margin, Parent.Height - Margin);
+			Boundaries =
+				new System.Drawing.Rectangle(Margin, Margin, Parent.Width - 2 * Margin, Parent.Height - 2 * Margin);
 		}
 	}
 

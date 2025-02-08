@@ -5,7 +5,7 @@ using Canvas.Components.Interfaces.Sized;
 namespace Canvas.Components.Interfaces.Mix;
 
 /// <summary>
-///     For components that have both a position and a size.
+/// Base class for components that have both a position and a size.
 /// </summary>
 [SupportedOSPlatform("windows")]
 public abstract class PositionedSizedComponent : PositionedComponent, ISizedComponent

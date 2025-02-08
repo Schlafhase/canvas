@@ -6,7 +6,7 @@ namespace Canvas.Components.Interfaces.Relative;
 
 [SupportedOSPlatform("windows")]
 public sealed class RelativeSizedRelativePositionedComponent<T> : RelativePositionedComponent<T>
-	where T : CanvasComponent, IPositionedComponent, ISizedComponent
+	where T : ICanvasComponent, IPositionedComponent, ISizedComponent
 {
 	public RelativeSizedRelativePositionedComponent(T component,
 		RelativeSizingOptions relativeSizingOptions,

@@ -1,12 +1,14 @@
 ﻿using System.Drawing;
+using System.Runtime.Versioning;
 using Canvas.Components.Interfaces;
 using Canvas.Components.Interfaces.Mix;
 
 namespace Canvas.Components;
 
+[SupportedOSPlatform("windows")]
 public class BitmapImage : PositionedRectangleSizedComponent
 {
-	private Bitmap _bitmap;
+	private Bitmap? _bitmap;
 
 	public BitmapImage(string filePath, int x, int y, int width, int height) : this(
 		Image.FromFile(filePath) as Bitmap, x, y, width, height) { }
@@ -25,7 +27,9 @@ public class BitmapImage : PositionedRectangleSizedComponent
 		get => _bitmap;
 		set
 		{
+			Bitmap? oldBitmap = _bitmap;
 			_bitmap = value;
+			oldBitmap?.Dispose();
 
 			if (!SuppressUpdate)
 			{

@@ -6,7 +6,7 @@ namespace Canvas.Components.Interfaces.Relative;
 
 [SupportedOSPlatform("windows")]
 public sealed class RelativeRectangleSizedRelativePositionedComponent<T> : RelativePositionedComponent<T>
-	where T : CanvasComponent, IPositionedComponent, IRectangleSizedComponent
+	where T : ICanvasComponent, IPositionedComponent, IRectangleSizedComponent
 {
 	public RelativeRectangleSizedRelativePositionedComponent(T component, int margin = 0) : base(component, margin) { }
 

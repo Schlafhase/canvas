@@ -2,6 +2,9 @@
 
 namespace Canvas.Components.Interfaces.Positioned;
 
+/// <summary>
+/// Base class for <see cref="IPositionedComponent"/>s
+/// </summary>
 [SupportedOSPlatform("windows")]
 public abstract class PositionedComponent : CanvasComponent, IPositionedComponent
 {
