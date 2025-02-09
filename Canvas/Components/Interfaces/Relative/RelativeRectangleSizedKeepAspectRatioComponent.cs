@@ -11,7 +11,7 @@ public class RelativeRectangleSizedKeepAspectRatioComponent<T> : CanvasComponent
 	private double _size;
 	private double _aspectRatio;
 	
-	private int _width => (int)(Size * _aspectRatio * _boundaries.Width);
+	private int _width => (int)(Size * _boundaries.Width);
 	private int _height => (int)(Size / _aspectRatio * _boundaries.Width);
 	
 	public double AspectRatio

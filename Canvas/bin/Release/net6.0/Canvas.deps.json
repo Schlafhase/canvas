@@ -8,10 +8,58 @@
     ".NETCoreApp,Version=v6.0": {
       "Canvas/1.0.0": {
         "dependencies": {
+          "CSharpMath.SkiaSharp": "0.5.1",
           "System.Drawing.Common": "8.0.10"
         },
         "runtime": {
           "Canvas.dll": {}
+        }
+      },
+      "CSharpMath/0.5.1": {
+        "dependencies": {
+          "System.Memory": "4.5.4",
+          "System.Runtime.CompilerServices.Unsafe": "4.6.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/CSharpMath.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "CSharpMath.Editor/0.5.1": {
+        "dependencies": {
+          "CSharpMath": "0.5.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/CSharpMath.Editor.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "CSharpMath.Rendering/0.5.1": {
+        "dependencies": {
+          "CSharpMath.Editor": "0.5.1",
+          "System.Numerics.Vectors": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/CSharpMath.Rendering.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "CSharpMath.SkiaSharp/0.5.1": {
+        "dependencies": {
+          "CSharpMath.Rendering": "0.5.1",
+          "SkiaSharp": "2.80.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/CSharpMath.SkiaSharp.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Microsoft.Win32.SystemEvents/8.0.0": {
@@ -30,6 +78,39 @@
           }
         }
       },
+      "SkiaSharp/2.80.1": {
+        "dependencies": {
+          "System.Memory": "4.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/SkiaSharp.dll": {
+            "assemblyVersion": "2.80.0.0",
+            "fileVersion": "2.80.1.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/osx/native/libSkiaSharp.dylib": {
+            "rid": "osx",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-arm64/native/libSkiaSharp.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/libSkiaSharp.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/libSkiaSharp.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
       "System.Drawing.Common/8.0.10": {
         "dependencies": {
           "Microsoft.Win32.SystemEvents": "8.0.0"
@@ -40,7 +121,10 @@
             "fileVersion": "8.0.1024.46803"
           }
         }
-      }
+      },
+      "System.Memory/4.5.4": {},
+      "System.Numerics.Vectors/4.5.0": {},
+      "System.Runtime.CompilerServices.Unsafe/4.6.0": {}
     }
   },
   "libraries": {
@@ -49,6 +133,34 @@
       "serviceable": false,
       "sha512": ""
     },
+    "CSharpMath/0.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CBAtejk24icPQNJWPjUDGUqklNLpfglpRxQljiezn2MQrxL5cIVuouCVnw6ipU3cft9Tq8YfS6f/JPhSjhFtFA==",
+      "path": "csharpmath/0.5.1",
+      "hashPath": "csharpmath.0.5.1.nupkg.sha512"
+    },
+    "CSharpMath.Editor/0.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-q5MFAjI7TO41PtGFNHBFwOw3J3IS7Dnm7aJHEgPxMWE5wl1H5byOo0pJnGwXevjhoSRssGRJH2KCXgn0KbGJFQ==",
+      "path": "csharpmath.editor/0.5.1",
+      "hashPath": "csharpmath.editor.0.5.1.nupkg.sha512"
+    },
+    "CSharpMath.Rendering/0.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-H4tctQzgpQmLICON1QAJtfm3/dj4exoxEKTuF9oO5YkHXMANWNfOQKwVtAx6n78hcD6WidwF2v2pH8Z/cOw/gg==",
+      "path": "csharpmath.rendering/0.5.1",
+      "hashPath": "csharpmath.rendering.0.5.1.nupkg.sha512"
+    },
+    "CSharpMath.SkiaSharp/0.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3SMI0o2EZi2/GskH6T5s9GDaBq9u0VBd/o8Geqd+FyPxEXCcmzECOZ3PdVdob/YNevl4okOTbqZrHZS2O28/ZQ==",
+      "path": "csharpmath.skiasharp/0.5.1",
+      "hashPath": "csharpmath.skiasharp.0.5.1.nupkg.sha512"
+    },
     "Microsoft.Win32.SystemEvents/8.0.0": {
       "type": "package",
       "serviceable": true,
@@ -56,12 +168,40 @@
       "path": "microsoft.win32.systemevents/8.0.0",
       "hashPath": "microsoft.win32.systemevents.8.0.0.nupkg.sha512"
     },
+    "SkiaSharp/2.80.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-CiQwnDzG+1JNGzjAN9G/9n/lJgUVA/NPOFgSlEtu6c7qQ0O7P1tMjrXp/+PtWfX0xyyY9ABsFAZK2kW34U7r/A==",
+      "path": "skiasharp/2.80.1",
+      "hashPath": "skiasharp.2.80.1.nupkg.sha512"
+    },
     "System.Drawing.Common/8.0.10": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-MdajRp3P+FOlThgY6FBjAqnmLiVl5t2yWEC/2AsDMqx1zYbJG3G5TnscFBQ4obqcaGqvN5UnhQHSFaJFG2HftQ==",
       "path": "system.drawing.common/8.0.10",
       "hashPath": "system.drawing.common.8.0.10.nupkg.sha512"
+    },
+    "System.Memory/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "path": "system.memory/4.5.4",
+      "hashPath": "system.memory.4.5.4.nupkg.sha512"
+    },
+    "System.Numerics.Vectors/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "path": "system.numerics.vectors/4.5.0",
+      "hashPath": "system.numerics.vectors.4.5.0.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/4.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HxozeSlipUK7dAroTYwIcGwKDeOVpQnJlpVaOkBz7CM4TsE5b/tKlQBZecTjh6FzcSbxndYaxxpsBMz+wMJeyw==",
+      "path": "system.runtime.compilerservices.unsafe/4.6.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
     }
   }
 }

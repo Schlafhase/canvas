@@ -142,6 +142,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "CSharpMath.SkiaSharp": {
+              "target": "Package",
+              "version": "[0.5.1, )"
+            },
             "System.Drawing.Common": {
               "target": "Package",
               "version": "[8.0.10, )"

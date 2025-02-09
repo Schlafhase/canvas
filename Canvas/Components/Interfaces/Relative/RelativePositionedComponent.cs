@@ -20,7 +20,7 @@ public class RelativePositionedComponent<T> : CanvasComponent where T : ICanvasC
 		_component = component;
 		Margin = margin;
 		_boundaries = new System.Drawing.Rectangle(0, 0, 0, 0);
-		updateBoundaries();
+		UpdateBoundaries();
 		X = 0f;
 		Y = 0f;
 	}
@@ -89,7 +89,7 @@ public class RelativePositionedComponent<T> : CanvasComponent where T : ICanvasC
 		}
 	}
 
-	private void updateBoundaries()
+	public void UpdateBoundaries()
 	{
 		if (Parent is not null)
 		{
@@ -100,7 +100,7 @@ public class RelativePositionedComponent<T> : CanvasComponent where T : ICanvasC
 	public override void Put(Graphics g)
 	{
 		SuppressUpdate = true;
-		updateBoundaries();
+		UpdateBoundaries();
 		SuppressUpdate = false;
 		
 		_component.Put(g);

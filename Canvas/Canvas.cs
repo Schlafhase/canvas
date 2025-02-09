@@ -72,12 +72,9 @@ public sealed class Canvas : PositionedRectangleSizedComponent, IDisposable
 	{
 		_syncContext = SynchronizationContext.Current;
 
-		foreach (CanvasComponent child in Children)
+		foreach (Canvas canvas in Children.OfType<Canvas>())
 		{
-			if (child is Canvas canvas)
-			{
-				canvas.UpdateSynchronizationContext();
-			}
+			canvas.UpdateSynchronizationContext();
 		}
 	}
 

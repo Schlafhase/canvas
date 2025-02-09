@@ -1,5 +1,6 @@
 using Canvas.Components;
 using Canvas.Components.Interfaces.Relative;
+using SkiaSharp;
 using Rectangle = Canvas.Components.Rectangle;
 
 namespace CanvasTest;
@@ -46,7 +47,13 @@ public partial class Form1 : Form
 			Size = 0.06
 		};
 
-
+		Equation equation = new(@"F = \frac{G \cdot m1 \cdot m2}{d^2}", 200, 0, 100)
+		{
+			Quality = 200,
+			Color = SKColors.White
+		};
+		
+		_canvas.AddChild(equation);
 		_canvas.AddChild(_relativeSquare);
 		_canvas.AddChild(_bezier);
 		_canvas.AddChild(_text);
