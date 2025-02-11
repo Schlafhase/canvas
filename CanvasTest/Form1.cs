@@ -47,7 +47,7 @@ public partial class Form1 : Form
 			Size = 0.06
 		};
 
-		Equation equation = new(@"F = \frac{G \cdot m1 \cdot m2}{d^2}", 200, 0, 100)
+		Equation equation = new(@"F = \frac{G \cdot m_1 \cdot m_2}{d^2}", 200, 0, 100)
 		{
 			Quality = 200,
 			Color = SKColors.White
