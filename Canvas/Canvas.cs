@@ -119,6 +119,12 @@ public sealed class Canvas : PositionedRectangleSizedComponent, IDisposable
 		_updateQueued = true;
 	}
 
+	public void ForceUpdate()
+	{
+		_updateQueued = true;
+		update();
+	}
+
 	private void update()
 	{
 		if (!_updateQueued)
