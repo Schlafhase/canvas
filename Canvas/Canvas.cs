@@ -66,7 +66,10 @@ public sealed class Canvas : PositionedRectangleSizedComponent, IDisposable
 				_syncContext?.Post(_ => update(), null);
 				NOP(1d / FrameRate);
 			}
-		});
+		})
+		{
+			IsBackground = true
+		};
 		_updateThread.Start();
 	}
 
@@ -107,10 +110,19 @@ public sealed class Canvas : PositionedRectangleSizedComponent, IDisposable
 		{
 			c.Put(g2);
 		}
+
+		Region previousClip = g.Clip;
 		
+		if (Parent is not null)
+		{
+			g.SetClip(new Rectangle(X, Y, Width, Height), CombineMode.Replace);
+		}
+
 		g.Clear(Color.Transparent);
 		g.FillRectangle(new SolidBrush(BackgroundColor), X, Y, Width, Height);
 		g.DrawImage(bitmap, X, Y);
+		
+		g.SetClip(previousClip, CombineMode.Replace);
 	}
 
     /// <summary>
@@ -133,6 +145,7 @@ public sealed class Canvas : PositionedRectangleSizedComponent, IDisposable
 		{
 			return;
 		}
+		Debug.WriteLine("Updating canvas");
 
 		OnUpdate?.Invoke();
 		_updateQueued = false;
