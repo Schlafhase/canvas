@@ -56,6 +56,7 @@
 			Name = "Form1";
 			Text = "Form1";
 			Resize += Form1_Resize;
+			pictureBox1.Click += Form1_Click;
 			Load += Form1_Load;
 			FormClosing += Form1_FormClosing;
 			((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

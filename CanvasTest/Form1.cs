@@ -1,4 +1,5 @@
 using Canvas.Components;
+using Canvas.Components.AnimationUtilities;
 using Canvas.Components.Interfaces.Relative;
 using SkiaSharp;
 using Rectangle = Canvas.Components.Rectangle;
@@ -22,7 +23,10 @@ public partial class Form1 : Form
 	{
 		InitializeComponent();
 
-		_canvas = new Canvas.Canvas(Width, Height);
+		_canvas = new Canvas.Canvas(Width, Height)
+		{
+			FrameRate = 120
+		};
 		pictureBox1.Image = new Bitmap(Width, Height);
 
 		_rectangle = new BitmapImage("C:\\\\Users\\\\linus\\\\OneDrive\\\\Pictures\\\\touching grass.jpg", 0, 0, 1000, 100);
@@ -99,6 +103,11 @@ public partial class Form1 : Form
 				}
 			});
 		animation.Start();
+	}
+
+	private void Form1_Click(object sender, EventArgs e)
+	{
+		_relativeSquare.X.InterpolateThreading(x => _relativeSquare.X = x, 0.5);
 	}
 
 	private void Form1_Resize(object sender, EventArgs e)

@@ -69,3 +69,12 @@ C:\Projects\cs\Canvas\CanvasTest\obj\Debug\net6.0-windows\refint\CanvasTest.dll
 C:\Projects\cs\Canvas\CanvasTest\obj\Debug\net6.0-windows\CanvasTest.pdb
 C:\Projects\cs\Canvas\CanvasTest\obj\Debug\net6.0-windows\CanvasTest.genruntimeconfig.cache
 C:\Projects\cs\Canvas\CanvasTest\obj\Debug\net6.0-windows\ref\CanvasTest.dll
+C:\Projects\cs\Canvas\CanvasTest\bin\Debug\net6.0-windows\CSharpMath.dll
+C:\Projects\cs\Canvas\CanvasTest\bin\Debug\net6.0-windows\CSharpMath.Editor.dll
+C:\Projects\cs\Canvas\CanvasTest\bin\Debug\net6.0-windows\CSharpMath.Rendering.dll
+C:\Projects\cs\Canvas\CanvasTest\bin\Debug\net6.0-windows\CSharpMath.SkiaSharp.dll
+C:\Projects\cs\Canvas\CanvasTest\bin\Debug\net6.0-windows\SkiaSharp.dll
+C:\Projects\cs\Canvas\CanvasTest\bin\Debug\net6.0-windows\runtimes\osx\native\libSkiaSharp.dylib
+C:\Projects\cs\Canvas\CanvasTest\bin\Debug\net6.0-windows\runtimes\win-arm64\native\libSkiaSharp.dll
+C:\Projects\cs\Canvas\CanvasTest\bin\Debug\net6.0-windows\runtimes\win-x64\native\libSkiaSharp.dll
+C:\Projects\cs\Canvas\CanvasTest\bin\Debug\net6.0-windows\runtimes\win-x86\native\libSkiaSharp.dll

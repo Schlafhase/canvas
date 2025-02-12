@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Runtime.Versioning;
 using Canvas.Components.Interfaces;
@@ -62,7 +64,7 @@ public sealed class Canvas : PositionedRectangleSizedComponent, IDisposable
 			while (!_disposed)
 			{
 				_syncContext?.Post(_ => update(), null);
-				Thread.Sleep(1000 / FrameRate);
+				NOP(1d / FrameRate);
 			}
 		});
 		_updateThread.Start();
@@ -168,4 +170,13 @@ public sealed class Canvas : PositionedRectangleSizedComponent, IDisposable
 	private SynchronizationContext? _syncContext;
 
 	#endregion
+	
+	[SuppressMessage("ReSharper", "InconsistentNaming")]
+	private static void NOP(double durationSeconds)
+	{
+		double durationTicks = Math.Round(durationSeconds * Stopwatch.Frequency);
+		Stopwatch sw = Stopwatch.StartNew();
+
+		while (sw.ElapsedTicks < durationTicks) { }
+	}
 }
