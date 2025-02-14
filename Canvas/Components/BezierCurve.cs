@@ -14,6 +14,7 @@ public class BezierCurve : PositionedComponent
 	}
 
 	public List<Point> Points { get; set; }
+	public double Scale = 1;
 	public object PointsLocker { get; } = new();
 
 	public Pen Pen { get; set; } = Pens.Black;
@@ -43,6 +44,11 @@ public class BezierCurve : PositionedComponent
 			points.Add(points.Last());
 		}
 
+		if (Scale != 1)
+		{
+			points = points.Select(point => new Point((int)(point.X * Scale), (int)(point.Y * Scale))).ToList();
+		}
+		
 		if (X != 0 || Y != 0)
 		{
 			points = points.Select(point => new Point(point.X + X, point.Y + Y)).ToList();

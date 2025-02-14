@@ -48,6 +48,16 @@ public sealed class GlowDot : PositionedSizedComponent
 		g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
 	}
 
+	public void SetRadius(int radius, int glowRadius)
+	{
+		radius = Math.Max(1, radius);
+		glowRadius = Math.Max(1, glowRadius);
+		
+		_innerCircle.Radius = radius;
+		_innerGlow.Radius = Math.Max(1, glowRadius / 2);
+		_glow.Radius = glowRadius;
+	}
+
 	#region Properties
 
 	public override Canvas? Parent
@@ -58,6 +68,17 @@ public sealed class GlowDot : PositionedSizedComponent
 			_innerCircle.Parent = value;
 			_innerGlow.Parent = value;
 			_glow.Parent = value;
+		}
+	}
+	
+	public override bool SuppressUpdate
+	{
+		get => _innerCircle.SuppressUpdate;
+		set
+		{
+			_innerCircle.SuppressUpdate = value;
+			_innerGlow.SuppressUpdate = value;
+			_glow.SuppressUpdate = value;
 		}
 	}
 

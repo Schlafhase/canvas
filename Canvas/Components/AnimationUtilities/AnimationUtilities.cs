@@ -12,19 +12,45 @@ public enum Interpolation
 
 public static class AnimationUtilities
 {
+	public static void InterpolateThreading(this int startValue,
+		Action<double> setValue,
+		double newValue,
+		double durationMilliseconds = 1000,
+		double updateIntervalMilliseconds = 10,
+		Interpolation type = Interpolation.Cubic)
+	{
+		InterpolateThreading((double)startValue, setValue, newValue, durationMilliseconds, updateIntervalMilliseconds, type);
+	}
+
 	public static void InterpolateThreading(this double startValue,
 		Action<double> setValue,
 		double newValue,
-		double duration = 1000,
+		double durationMilliseconds = 1000,
+		double updateIntervalMilliseconds = 10,
 		Interpolation type = Interpolation.Cubic)
 	{
-		new Thread(() => startValue.Interpolate(setValue, newValue, duration, type)).Start();
+		new Thread(() => startValue.Interpolate(setValue, newValue, durationMilliseconds, updateIntervalMilliseconds,
+												type))
+		{
+			IsBackground = true
+		}.Start();
+	}
+
+	public static void Interpolate(this int startValue,
+		Action<double> setValue,
+		double newValue,
+		double durationMilliseconds = 1000,
+		double updateIntervalMilliseconds = 10,
+		Interpolation type = Interpolation.Cubic)
+	{
+		Interpolate((double)startValue, setValue, newValue, durationMilliseconds, updateIntervalMilliseconds, type);
 	}
 
 	public static void Interpolate(this double startValue,
 		Action<double> setValue,
 		double newValue,
 		double durationMilliseconds = 1000,
+		double updateIntervalMilliseconds = 10,
 		Interpolation type = Interpolation.Cubic)
 	{
 		Func<double, double, double, double> interpolationFunction = type switch
@@ -42,7 +68,7 @@ public static class AnimationUtilities
 		{
 			t = sw.ElapsedMilliseconds / durationMilliseconds;
 			setValue(interpolationFunction(startValue, newValue, t));
-			NOP(0.01);
+			NOP(updateIntervalMilliseconds / 1000);
 		}
 
 		setValue(newValue);

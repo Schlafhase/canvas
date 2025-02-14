@@ -15,7 +15,7 @@ public class Equation : PositionedSizedComponent
 	{
 		Content = content;
 		Size = size;
-		Quality = 20;
+		Quality = 100;
 		X = x;
 		Y = y;
 	}
@@ -35,7 +35,15 @@ public class Equation : PositionedSizedComponent
 	public SKColor Color
 	{
 		get => _painter.TextColor;
-		set => _painter.TextColor = value;
+		set
+		{
+			_painter.TextColor = value;
+
+			if (!SuppressUpdate)
+			{
+				Parent?.Update();
+			}
+		}
 	}
 
 	public override void Put(Graphics g)
